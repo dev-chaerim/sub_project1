@@ -54,21 +54,26 @@ a {
 /* footer */
 
 .container footer {
+    
     margin-top: 50px;
     background-color: $footerColor;
     height: 100px;
     font-size: 12px;
     color: white;
     display: flex;
-    padding: 20px 13px;
+    padding: 30px 13px;
+
+    .footer1 {
+        margin-left: 30px;
+    } 
     
     h2 {
         font-size: 15px;
         margin-bottom: 6px;
     }
-    .footer2 {
-        margin-left: 50px;
-    }
+
+    
+    
     p {
         display: block;
         font-size: 11px;
@@ -80,6 +85,10 @@ a {
             margin-bottom: 10px;
         }
     }
+}
+
+.footer2 {
+    margin-left: 50px;
 }
 
 
@@ -234,3 +243,103 @@ main {
 }
 
 
+/* 서브페이지 */
+
+.sub_main {
+    margin: 0 60px;
+    // background-color: blueviolet;
+}
+
+.sub_container {
+    display: flex;
+    // background-color: aqua;
+    font-size: 17px;
+    font-family: 'BMHANNAAir';
+
+    img {
+        width: 250px;
+    }
+
+    .sub_detail {
+        margin-left: 20px;
+        width: 490px;
+        // background-color: antiquewhite;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        
+        .sub_detail_item {
+            display: flex;
+            line-height: 10px;
+            box-sizing: border-box;
+            border-bottom: 1px solid #555;
+            color: $textColor;
+            
+
+            .sub_list {
+                border: 1px solid #555;
+                border-bottom: none;
+                // background-color: #555;
+                padding: 16px 3px;
+                width: 90px;
+                text-align: center;
+            }
+            
+            .sub_list_content {
+                padding: 10px;
+                // background-color: #555;
+                line-height: 25px;
+            }
+
+            div {
+                margin-right: 10px;
+            }
+        }
+    }
+}
+
+.subpage_title {
+    font-size: 20px;
+    margin: 20px 0;
+    border-bottom: 1px solid $deepYello;
+    width: 170px;
+    padding-bottom: 6px;
+    text-align: center;
+    color:$textColor;
+}
+
+.sub_map {
+    margin-top: 20px;
+    padding: 20px 0;
+    
+    h2 {
+        border-bottom: 1px solid $deepYello;
+        width: 170px;
+        padding-bottom: 6px;
+    }
+
+    div {
+        margin-top: 20px;
+        border: 1px solid #ccc;
+        width: 100%;
+        height: 200px;
+    }
+}
+
+.sub_subway {
+    margin-top: 20px;
+    padding: 20px 0;
+    
+    h2 {
+        border-bottom: 1px solid $deepYello;
+        width: 170px;
+        padding-bottom: 6px;
+    }
+
+    div {
+        margin-top: 20px;
+        border: 1px solid #ccc;
+        width: 100%;
+        height: 200px;
+    }
+}
