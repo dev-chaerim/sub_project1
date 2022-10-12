@@ -5,9 +5,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        .text-success{
+            color:#0066ff;
+            font-size : 24px;
+        }
+    </style>
 </head>
 <body>
-    <script src ="./node_modules/axios/dist/axios.min.js"></script>
+    <div id = "console"></div> 
+
+    <script src ="node_modules/axios/dist/axios.min.js"></script>
   
     <script>
           /** KAKAO REST KEY*/
@@ -52,6 +60,7 @@
         json = response.data;
         json1 = response1.data;
         json2 = response2.data;
+
         console.log(json);
         console.log(json1);
         console.log(json2);
@@ -79,26 +88,19 @@
             console.log("지하철 역 이름 : "+v.subwayStationName);
         });
     }
+   
     if(json2){
+        const h1 = document.createElement('h1');
+        h1.classList.add('text-success');
+        h1.innerHTML ="주소 : " +  json2.documents[0].address_name;
+        document.querySelector('#console').appendChild(h1);
 
-        json2.documents.forEach( (v,i) =>{
-            console.log("주소 : "+ v.address_name);
-            console.log("카테고리 : " + v.category_group_name);
-            console.log("카테고리 : "+v.category_name);
-            console.log("전화번호: "+ v.phone);
-            console.log("이름  : " + v.place_name);
-            console.log("도로명주소 : "+v.road_address_name);
-            console.log('위도 : '+v.y +'  경도 : '+ v.x);
-        });
-  
-        console.log("주소 : "+ json2.documents[0].address_name);
         console.log("카테고리 : " + json2.documents[0].category_group_name);
         console.log("카테고리 : "+json2.documents[0].category_name);
         console.log("전화번호: "+ json2.documents[0].phone);
         console.log("이름  : " + json2.documents[0].place_name);
         console.log("도로명주소 : "+json2.documents[0].road_address_name);
-        console.log('위도 : '+json2.documents[0].y +'  경도 : '+ json2.documents[0].x);
-           
+        console.log('위도 : '+json2.documents[0].y +'  경도 : '+ json2.documents[0].x);     
     }
     
 })();
