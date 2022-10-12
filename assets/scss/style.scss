@@ -1,0 +1,236 @@
+@import 'variable.scss';
+@import 'fonts.scss';
+
+
+
+
+/* 공통 */
+body {
+    // font-family: 'Jua', sans-serif;
+    // font-family: 'Do Hyeon', sans-serif;
+    // font-family: 'BMHANNAAir';
+    font-family: 'Hanna', fantasy;
+    background-color: #555;
+}
+
+button {
+    font-family: 'Hanna', fantasy;
+}
+
+p {
+    font-family: 'BMHANNAAir';
+}
+
+.container {
+    // padding: 20px 0;
+    width: 800px;
+    margin: auto;
+    background-color: white;
+}
+
+a {
+    color: black;
+    text-decoration: none;
+}
+
+
+/* header */
+.container header {
+    background-color: #555;
+    background: url(../img/bg1.jpg) center/cover no-repeat;
+    width: 100%;
+    height: 190px;
+    position: relative;
+    
+    a {
+        color: white;
+        font-size: 25px;
+        position: absolute;
+        top: 10px;
+        left: 10px;
+    }
+}
+
+/* footer */
+
+.container footer {
+    margin-top: 50px;
+    background-color: $footerColor;
+    height: 100px;
+    font-size: 12px;
+    color: white;
+    display: flex;
+    padding: 20px 13px;
+    
+    h2 {
+        font-size: 15px;
+        margin-bottom: 6px;
+    }
+    .footer2 {
+        margin-left: 50px;
+    }
+    p {
+        display: block;
+        font-size: 11px;
+        color: rgb(160, 160, 160);
+        margin-bottom: 3px;
+        
+        &:first-child {
+            color: white;
+            margin-bottom: 10px;
+        }
+    }
+}
+
+
+/* sub title */
+
+.sub_title {
+    font-size: 20px;
+    margin: 20px;
+    border-bottom: 1px solid $deepYello;
+    width: 110px;
+    padding-bottom: 6px;
+    text-align: center;
+    color:$textColor;
+}
+
+
+/* nav */
+
+.gnb {
+    display: flex;
+    // background-color: #555;
+    width: 70%;
+    margin: 0 auto;
+    padding: 10px;
+    justify-content: space-between;
+
+    li {
+        // background-color: aquamarine;
+        text-align: center;
+        padding: 10px;
+        flex: 1;
+        
+        a {
+            display: block;
+            padding: 12px 8px;
+            // width: 80px;
+            background-color: $brightYello;
+            border-radius: 5px;
+            font-size: 18px;
+            color:$textColor;
+            
+
+            &:hover {
+                background-color: $deepYello;
+                transition: 0.5s;
+            }
+        }
+        
+
+    }
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.main_container {
+    display: flex;
+    // background-color: #555;
+    width: 88%;
+    margin: 0 auto;
+    justify-content: space-between;
+    padding: 20px 0;
+    flex-wrap:wrap;
+    
+    .item {
+        // background-color:aqua;
+        display: flex;
+        flex-direction: column;
+        align-items:center;
+        margin-top: 20px;
+
+        a {
+            border: 1px solid rgb(175, 175, 175);
+            // background-color: antiquewhite;
+            padding: 8px;
+            
+            
+            img {
+                width: 200px;
+                height: 320px;
+                object-fit: cover;
+                margin-bottom: 10px;
+            }
+
+            p {
+                font-size: 13px;
+            }
+
+            &:hover {
+                transform: scale(1.01);
+                transition: transform .2s;
+            }
+            
+            
+        }
+        
+        .btn_box {
+            padding-top: 12px;
+            display: flex;
+            justify-content: space-around;
+            // background-color: #555;
+            width: 100%;
+            
+            
+            button {
+                padding: 10px;
+                width: 100px;
+                border-style: none;
+                border-radius: 5px;
+                background-color: $deepBlue;
+                color: white;
+                font-size: 16px;
+                cursor: pointer;
+
+                &:hover {
+                     transform: scale(1.06);
+                     transition: transform .2s;
+
+                }
+
+            }
+            
+        }
+
+    }
+}
+
+/* 더보기 버튼 */
+.btn_more {
+    margin: 20px auto;
+    width: 100px;
+    padding: 10px;
+    border-radius: 5px;
+    border-style: none;
+    background-color: $brightYello;
+    font-size: 16px;
+    text-align: center;
+    cursor: pointer;
+
+    div {
+        margin-left: 6px;
+        color:$textColor;
+    }
+
+    &:hover {
+        background-color: $deepYello;
+        transition: 0.3s;
+    }
+}
+
+

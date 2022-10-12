@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CULTURE IN SEOUL</title>
+    <link rel="stylesheet" href="./assets/css/reset.css">
+    <link rel="stylesheet" href="./assets/css/style.min.css">
+    
+</head>
+<body>
+    <div class="container">
+        <div data-include="inc/header.html"></div>
+        <h2 class="sub_title">문화 행사 찾기</h2>
+        <nav>
+            <ul class="gnb">
+                <li><a href="main.html?kind=festival" data-kind="festival">축제</a></li>
+                <li><a href="main.html?kind=concert" data-kind="concert">공연</a></li>
+                <li><a href="main.html?kind=exhibit" data-kind="exhibit">전시</a></li>
+                <li><a href="main.html?kind=edu" data-kind="edu">교육/체험</a></li>
+                <li><a href="main.html?kind=else" data-kind="else">기타</a></li>
+            </ul>
+        </nav>
+        <main>
+            <div class="main_container">
+                <div class="item">
+                    <!-- 주석처리 예정 / js로 dom생성하기 -->
+                    <a href="#">
+                        <img src="./assets/img/1.png" alt="thumbnail">
+                        <div class="item_text">
+                            <h2>타이틀</h2>
+                            <p>날짜</p>
+                            <p>장소</p>
+                        </div>
+                    </a>
+                    <div class="btn_box">
+                        <button type="button">지도</button>
+                        <button type="button">길찾기</button>
+                    </div>
+                </div>
+                <div class="item">
+                    <!-- 주석처리 예정 / js로 dom생성하기 -->
+                    <a href="#">
+                        <img src="./assets/img/2.png" alt="thumbnail">
+                        <h2>타이틀</h2>
+                        <p>날짜</p>
+                        <p>장소</p>
+                    </a>
+                    <div class="btn_box">
+                        <button type="button">지도</button>
+                        <button type="button">길찾기</button>
+                    </div>
+                </div>
+                <div class="item">
+                    <!-- 주석처리 예정 / js로 dom생성하기 -->
+                    <a href="#">
+                        <img src="./assets/img/3.png" alt="thumbnail">
+                        <h2>타이틀</h2>
+                        <p>날짜</p>
+                        <p>장소</p>
+                    </a>
+                    <div class="btn_box">
+                        <button type="button">지도</button>
+                        <button type="button">길찾기</button>
+                    </div>
+                </div>
+                
+                
+            </div>
+            <button type="button" class="btn_more"><div>더보기 ▼</div></button>
+        </main>
+        <div data-include="inc/footer.html"></div>
+    
+    </div>
+   
+    <script src="node_modules/axios/dist/axios.min.js"></script>
+    <script src="assets/js/include.js"></script>
+</body>
+</html>
