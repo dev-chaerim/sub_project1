@@ -37,7 +37,7 @@
         let json2 = null;
         try{
             const response = await axios.get(`${CULTURE_URL}` + `${CULTURE_REST_KEY}`+'/json/culturalEventInfo/'+`${CULTURE_STRAT}`+'/'+ `${CULTURE_END}`);                
-        const response1 = await axios.get('http://apis.data.go.kr/1613000/SubwayInfoService/getKwrdFndSubwaySttnList',{
+            const response1 = await axios.get('http://apis.data.go.kr/1613000/SubwayInfoService/getKwrdFndSubwaySttnList',{
             params : {
                 serviceKey : `${SUBWAY_REST_KEY}`,
                 subwayStationName : '목동',
@@ -49,6 +49,7 @@
 
             },
         });
+        
         const response2 = await axios.get('https://dapi.kakao.com/v2/local/search/keyword.json',{
             params : {
                 query :'세종문화회관',
