@@ -1,0 +1,11 @@
+https://apis.map.kakao.com/ <- 카카오 local
+-요청 주소 : https://dapi.kakao.com/v2/local/search/keyword.json
+-인증 키 : KakaoAK e26b052feeafb9a4a103db6f5c81a3bd
+
+https://data.seoul.go.kr/dataList/OA-15486/A/1/datasetView.do <- 서울시 문화행사 정보 
+- 요청 주소 : http://openapi.seoul.go.kr:8088/(인증키)/xml/culturalEventInfo/1/5/
+- 인증키 : 596d734a65646c7333367749686247
+
+https://www.data.go.kr/data/15098554/openapi.do <- 국토교통부_(TAGO)_지하철정보
+-요청 주소 : http://apis.data.go.kr/1613000/SubwayInfoService/getKwrdFndSubwaySttnList
+-인증 키 : FBNGXh7WiDx75giQGr3STbhDglMlW0OCQwfrIFk9H2P4uC%2Fj9oEB8q37tRxpWHaZRbbEXCWO5vehlXTNzzlHCQ%3D%3D

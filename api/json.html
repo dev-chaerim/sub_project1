@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src ="./node_modules/axios/dist/axios.min.js"></script>
+  
+    <script>
+          /** KAKAO REST KEY*/
+    const SUBWAY_URL = 'http://apis.data.go.kr/1613000/SubwayInfoService/getKwrdFndSubwaySttnList?'
+    const SUBWAY_REST_KEY = 'FBNGXh7WiDx75giQGr3STbhDglMlW0OCQwfrIFk9H2P4uC/j9oEB8q37tRxpWHaZRbbEXCWO5vehlXTNzzlHCQ=='
+    const SUBWAY_NAME = '서울역';   
+
+    const CULTURE_URL = 'http://openapi.seoul.go.kr:8088/';
+    const CULTURE_REST_KEY = '596d734a65646c7333367749686247'
+    const CULTURE_STRAT = 1;
+    const CULTURE_END   = 5;
+
+    const CULTURE_CODENAME  = "";
+    const KAKAO_REST_KEY = '0ec224f87893bd9a115d82797a7bc8b6';
+                  
+    function getApiKey(key) {
+        let KeyValue = "";
+        if(key === "CULTURE"){
+            KeyValue = '596d734a65646c7333367749686247';
+        } else if(key === "SUBWAY"){
+            KeyValue = 'FBNGXh7WiDx75giQGr3STbhDglMlW0OCQwfrIFk9H2P4uC/j9oEB8q37tRxpWHaZRbbEXCWO5vehlXTNzzlHCQ==';
+        } else if(key === "KAKAO_LOCAL"){
+            KeyValue = '596d734a65646c7333367749686247';
+        }
+        return KeyValue;
+    }
+    function getApiurl(url) {
+        let UrlName = "";
+        if(url === "CULTURE"){
+            UrlName ='http://openapi.seoul.go.kr:8088/';
+        } else if(url === "SUBWAY"){
+            UrlName =  'http://apis.data.go.kr/1613000/SubwayInfoService/getKwrdFndSubwaySttnList?';
+        } else if(url === "KAKAO_LOCAL"){
+            UrlName = 'https://dapi.kakao.com/v2/local/search/keyword.json';
+        }
+        return UrlName;
+    }
+   
+    async function getApiData(data){
+        let JsonData = null; 
+        if(data === "CULTURE"){
+            try{
+                const response = await axios.get(`${CULTURE_URL}` + `${CULTURE_REST_KEY}`+'/json/culturalEventInfo/'+`${CULTURE_STRAT}`+'/'+ `${CULTURE_END}`);  
+                JsonData = response.data;  
+            }catch(e){
+                console.error(e);
+                alert('요청을 처리하는데 실패했습니다.');
+                return;
+            }
+        } else if(data === "SUBWAY"){
+        } else if(data === "KAKAO_LOCAL"){
+        }
+        return JsonData; 
+    }
+    getApiData ("CULTURE").then(console.log);
+
+    console.log('API KEY :' +getApiKey("CULTURE"));
+    console.log('API KEY :' +getApiKey("SUBWAY"));
+    console.log('API KEY :' +getApiKey("KAKAO_LOCAL"));
+
+    console.log('API URL :' +getApiurl("CULTURE"));
+    console.log('API URL :' +getApiurl("SUBWAY"));
+    console.log('API URL :' +getApiurl("KAKAO_LOCAL"));
+
+/*
+    (async () =>{
+        let json = null;
+        let json1 = null;
+        let json2 = null;
+        try{
+            const response = await axios.get(`${CULTURE_URL}` + `${CULTURE_REST_KEY}`+'/json/culturalEventInfo/'+`${CULTURE_STRAT}`+'/'+ `${CULTURE_END}`);                
+        const response1 = await axios.get('http://apis.data.go.kr/1613000/SubwayInfoService/getKwrdFndSubwaySttnList',{
+            params : {
+                serviceKey : `${SUBWAY_REST_KEY}`,
+                subwayStationName : '목동',
+                numOfRows : 10,
+                pageNo : 1,
+                _type : 'json',
+            },
+            headers : {
+
+            },
+        });
+        const response2 = await axios.get('https://dapi.kakao.com/v2/local/search/keyword.json',{
+            params : {
+                query :'세종문화회관',
+            },
+            headers : {
+                Authorization : `KakaoAK ${KAKAO_REST_KEY}`,
+            },
+        });
+        json = response.data;
+        json1 = response1.data;
+        json2 = response2.data;
+        console.log(json);
+        console.log(json1);
+        console.log(json2);
+    }catch(e){
+        console.error(e);
+        alert('요청을 처리하는데 실패했습니다.');
+        return;
+    }
+    if(json){
+        json.culturalEventInfo.row.forEach( (v,i) =>{
+            console.log("분류 : "+ v.CODENAME);
+            console.log("타이틀 : " + v.TITLE);
+            console.log("날짜 : "+v.DATE);
+            console.log("장소 : "+v.PLACE);
+            console.log("이용대상 : "+v.USE_TRGT);
+            console.log("이용요금 : "+v.USE_FEE);
+            console.log("홈페이지 : "+v.ORG_LINK);
+            console.log("메인 이미지 : "+v.MAIN_IMG);
+        });
+    }
+    if(json1){
+        json1.response.body.items.item.forEach( (v,i) =>{
+            console.log("지하철 호선 : "+ v.subwayRouteName);
+            console.log("지하철 역 ID : " + v.subwayStationId);
+            console.log("지하철 역 이름 : "+v.subwayStationName);
+        });
+    }
+    if(json2){
+        */
+        /*
+        json2.documents.forEach( (v,i) =>{
+            console.log("주소 : "+ v.address_name);
+            console.log("카테고리 : " + v.category_group_name);
+            console.log("카테고리 : "+v.category_name);
+            console.log("전화번호: "+ v.phone);
+            console.log("이름  : " + v.place_name);
+            console.log("도로명주소 : "+v.road_address_name);
+            console.log('위도 : '+v.y +'  경도 : '+ v.x);
+        });
+  
+        console.log("주소 : "+ json2.documents[0].address_name);
+        console.log("카테고리 : " + json2.documents[0].category_group_name);
+        console.log("카테고리 : "+json2.documents[0].category_name);
+        console.log("전화번호: "+ json2.documents[0].phone);
+        console.log("이름  : " + json2.documents[0].place_name);
+        console.log("도로명주소 : "+json2.documents[0].road_address_name);
+        console.log('위도 : '+json2.documents[0].y +'  경도 : '+ json2.documents[0].x);
+           
+ //   }
+    
+//})();
+    </script>
+</body>
+</html>
