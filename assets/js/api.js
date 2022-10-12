@@ -5,7 +5,7 @@ const SUBWAY_NAME = '서울역';
 const CULTURE_URL = 'http://openapi.seoul.go.kr:8088/';
 const CULTURE_REST_KEY = '596d734a65646c7333367749686247'
 const CULTURE_STRAT = 1;
-const CULTURE_END   = 5;
+const CULTURE_END   = 60;
 const CULTURE_CODENAME  = "";
 
 const KAKAO_REST_KEY = '0ec224f87893bd9a115d82797a7bc8b6';
