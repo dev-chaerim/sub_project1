@@ -16,94 +16,21 @@
     <div id = "console"></div> 
 
     <script src ="node_modules/axios/dist/axios.min.js"></script>
+    <script src = "assets/js/api2.js"></script>
   
     <script>
-          /** KAKAO REST KEY*/
-    const SUBWAY_URL = 'http://apis.data.go.kr/1613000/SubwayInfoService/getKwrdFndSubwaySttnList?'
-    const SUBWAY_REST_KEY = 'FBNGXh7WiDx75giQGr3STbhDglMlW0OCQwfrIFk9H2P4uC/j9oEB8q37tRxpWHaZRbbEXCWO5vehlXTNzzlHCQ=='
-    const SUBWAY_NAME = '서울역';   
+ 
+    (async () => {
+        const funccul = await test_api("culture",1,10,"연극"); // parmeta 1,2(문화축제 더보기에서 시작 점),3(끝점),4(codename별로 새롭게 검색 가능 ex 연극 빈 곳으로 놔두면 전체 순번 )
+        console.log(funccul);
 
-    const CULTURE_URL = 'http://openapi.seoul.go.kr:8088/';
-    const CULTURE_REST_KEY = '596d734a65646c7333367749686247'
-    const CULTURE_STRAT = 1;
-    const CULTURE_END   = 5;
+        const funcsub = await test_api("subway","","","목동");// 로컬 혹은 문화 축제 api에서 받은 주소를 parmeta 4번에 넣어 지하철 정보 가져 옴 
+        console.log(funcsub);
 
-    const CULTURE_CODENAME  = "";
-    const KAKAO_REST_KEY = '0ec224f87893bd9a115d82797a7bc8b6';
-     
-    (async () =>{
-        let json = null;
-        let json1 = null;
-        let json2 = null;
-        try{
-            const response = await axios.get(`${CULTURE_URL}` + `${CULTURE_REST_KEY}`+'/json/culturalEventInfo/'+`${CULTURE_STRAT}`+'/'+ `${CULTURE_END}`);                
-        const response1 = await axios.get('http://apis.data.go.kr/1613000/SubwayInfoService/getKwrdFndSubwaySttnList',{
-            params : {
-                serviceKey : `${SUBWAY_REST_KEY}`,
-                subwayStationName : '목동',
-                numOfRows : 10,
-                pageNo : 1,
-                _type : 'json',
-            },
-            headers : {
+        const funckakao = await test_api("kakao","","","세종문화회관"); // 문화 축제 api에서 받은 주소를 parameta 4번에 넣어 주소 받아옴
+        console.log(funckakao);
+    })();
 
-            },
-        });
-        const response2 = await axios.get('https://dapi.kakao.com/v2/local/search/keyword.json',{
-            params : {
-                query :'세종문화회관',
-            },
-            headers : {
-                Authorization : `KakaoAK ${KAKAO_REST_KEY}`,
-            },
-        });
-        json = response.data;
-        json1 = response1.data;
-        json2 = response2.data;
-
-        console.log(json);
-        console.log(json1);
-        console.log(json2);
-    }catch(e){
-        console.error(e);
-        alert('요청을 처리하는데 실패했습니다.');
-        return;
-    }
-    if(json){
-        json.culturalEventInfo.row.forEach( (v,i) =>{
-            console.log("분류 : "+ v.CODENAME);
-            console.log("타이틀 : " + v.TITLE);
-            console.log("날짜 : "+v.DATE);
-            console.log("장소 : "+v.PLACE);
-            console.log("이용대상 : "+v.USE_TRGT);
-            console.log("이용요금 : "+v.USE_FEE);
-            console.log("홈페이지 : "+v.ORG_LINK);
-            console.log("메인 이미지 : "+v.MAIN_IMG);
-        });
-    }
-    if(json1){
-        json1.response.body.items.item.forEach( (v,i) =>{
-            console.log("지하철 호선 : "+ v.subwayRouteName);
-            console.log("지하철 역 ID : " + v.subwayStationId);
-            console.log("지하철 역 이름 : "+v.subwayStationName);
-        });
-    }
-   
-    if(json2){
-        const h1 = document.createElement('h1');
-        h1.classList.add('text-success');
-        h1.innerHTML ="주소 : " +  json2.documents[0].address_name;
-        document.querySelector('#console').appendChild(h1);
-
-        console.log("카테고리 : " + json2.documents[0].category_group_name);
-        console.log("카테고리 : "+json2.documents[0].category_name);
-        console.log("전화번호: "+ json2.documents[0].phone);
-        console.log("이름  : " + json2.documents[0].place_name);
-        console.log("도로명주소 : "+json2.documents[0].road_address_name);
-        console.log('위도 : '+json2.documents[0].y +'  경도 : '+ json2.documents[0].x);     
-    }
-    
-})();
     </script>
 </body>
 </html>
