@@ -116,7 +116,7 @@ document.querySelector('.btn_more').addEventListener('click', (e) => {
 
 });
 
-document.querySelector('.btn_fold').addEventListener('click', () => {
+document.querySelector('.btn_fold').addEventListener('click', (e) => {
     console.log("fold")
     //원래 노출되던 3개 삭제
     document.querySelector('.main_container').remove();
@@ -135,6 +135,11 @@ document.querySelector('.btn_fold').addEventListener('click', () => {
         
         makeDom(v, mainCon);   
     })
+
+    e.currentTarget.style.display = 'none';
+
+    document.querySelector('.btn_more').style.display = 'block';
+
 })
 
 
