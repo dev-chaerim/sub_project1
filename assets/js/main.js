@@ -22,22 +22,23 @@ data.forEach((v, i) => {
     if(v.CODENAME.includes('축제')) {
         kindData['festival'].push(v);
     } else if(v.CODENAME == '기타') {
-        kindData['concert'].push(v);
+        kindData['el'].push(v);
     } else if(v.CODENAME == '문화교양/강좌') {
         kindData['exhibit'].push(v);
     } else if(v.CODENAME == '전시/미술') {
         kindData['edu'].push(v);
     } else {
-        kindData['el'].push(v);
+        kindData['concert'].push(v);
     }
 })
 
 console.log(kindData);
 
 
-// nav 버튼 작업
+// nav 버튼에 active 클래스이름 주기
 
 const setActiveGnb = (kind) => {
+
     if (kind) {
         document.querySelectorAll('.gnb a').forEach((v, i) => {
             if(v.dataset.kind == kind) {
@@ -47,28 +48,100 @@ const setActiveGnb = (kind) => {
                 v.classList.remove('active');
             }
         })
+    } else {
+        document.querySelector("[data-kind='festival']").classList.add('active');
     }
 
 }
 
+
+//쿼리 값 받아오기
 const query = new URLSearchParams(location.search);
 const kind = query.get('kind');
-console.log('!!!', kind);
+// console.log('kind', kind);
+
+//현재 쿼리값에 맞는 버튼 활성화
 setActiveGnb(kind);
 
+//데이터에서 쿼리스트링에 맞는 데이터 가져오기
 const currentList = kindData[`${kind}`];
-console.log('@@@',currentList);
+// console.log('currentList:',currentList);
 
-const container = document.querySelector('.main_container')
+const container = document.querySelector('.main_container');
 
-currentList.some((v, i) => {
+if(!currentList) {
+    // 축제 데이터로 초기화
+    kindData['festival'].some((v, i) => {
+        if( i == 3 ) {
+            return true;
+        }
+         // dom 요소 생성
+        makeDom(v, container);
+    })
+} else {
+    //선택한 쿼리스트링에 맞는 데이터로 배열 돌리기
+    currentList.some((v, i) => {
 
-    //3개만 노출되도록 설정
-    if( i == 3 ) {
-        return true;
-    }
+        //3개만 노출되도록 설정
+        if( i == 3 ) {
+            return true;
+        }
+    
+        // dom 요소 생성
+        makeDom(v, container);
+        
+    })
+}
 
-    // dom 요소 생성
+//더보기 버튼 클릭 이벤트
+
+document.querySelector('.btn_more').addEventListener('click', (e) => {
+    console.log('더보기 버튼')
+    //원래 노출되던 3개 삭제
+    document.querySelector('.main_container').remove();
+
+    //새로운 컨테이너 만들고 그 안에 다시 dom 요소 생성
+    const con = document.querySelector('.con');
+    const mainCon = document.createElement('div');
+    mainCon.classList.add('main_container');
+    con.appendChild(mainCon);
+
+    currentList.some((v, i) => {
+        makeDom(v, mainCon);   
+    })
+
+    e.currentTarget.style.display = 'none';
+
+    document.querySelector('.btn_fold').style.display = 'block';
+
+});
+
+document.querySelector('.btn_fold').addEventListener('click', () => {
+    console.log("fold")
+    //원래 노출되던 3개 삭제
+    document.querySelector('.main_container').remove();
+
+    //새로운 컨테이너 만들고 그 안에 다시 dom 요소 생성
+    const con = document.querySelector('.con');
+    const mainCon = document.createElement('div');
+    mainCon.classList.add('main_container');
+    con.appendChild(mainCon);
+
+    currentList.some((v, i) => {
+         //3개만 노출되도록 설정
+         if( i == 3 ) {
+            return true;
+        }
+        
+        makeDom(v, mainCon);   
+    })
+})
+
+
+
+//html dom 생성하는 함수
+function makeDom(v, con) {
+    
     const item = document.createElement('div');
     item.classList.add('item');
 
@@ -113,9 +186,8 @@ currentList.some((v, i) => {
     item.appendChild(a);
     item.appendChild(btnBox);
 
-    container.appendChild(item);
-    
-})
+    con.appendChild(item);
+}
 
 
 

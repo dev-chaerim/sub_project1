@@ -135,6 +135,10 @@ a {
                 background-color: $deepYello;
                 transition: 0.5s;
             }
+            &.active {
+                background-color: $deepYello;
+            }
+
         }
         
 
@@ -175,7 +179,6 @@ main {
                 white-space: nowrap;
                 overflow: hidden;
                 text-overflow: ellipsis;
-                -webkit-line-clamp: 1;
                 margin-bottom: 10px;
                 
             }
@@ -192,13 +195,16 @@ main {
             p {
                 font-size: 13px;
                 margin-top: 3px;
+                width: 200px;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
             }
 
             &:hover {
                 transform: scale(1.01);
                 transition: transform .2s;
             }
-            
             
         }
         
@@ -234,7 +240,7 @@ main {
 }
 
 /* 더보기 버튼 */
-.btn_more {
+.btn_more, .btn_fold {
     margin: 20px auto;
     width: 100px;
     padding: 10px;
@@ -254,6 +260,10 @@ main {
         background-color: $deepYello;
         transition: 0.3s;
     }
+}
+
+.btn_fold {
+    display: none;
 }
 
 
