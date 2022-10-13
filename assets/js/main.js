@@ -146,12 +146,26 @@ document.querySelector('.btn_fold').addEventListener('click', (e) => {
 
 //html dom 생성하는 함수
 function makeDom(v, con) {
+    let idx;
     
     const item = document.createElement('div');
     item.classList.add('item');
 
     const a = document.createElement('a');
-    a.setAttribute('href', '#');
+    
+    //이미지 클릭하면 쿼리스트링으로 인덱스 번호 보내기
+    a.addEventListener('click', (e) => {
+        const target = e.currentTarget;
+        const title = target.querySelector('h2').innerHTML;
+        data.forEach((v, i) => {
+            if(v.TITLE == title) {
+                // console.log(v.TITLE, i)
+                idx = i;
+            }
+        })
+        // console.log(idx);
+        a.setAttribute('href', `./sub.html?/${idx}`);
+    })
 
     const img = document.createElement('img');
     img.setAttribute('src', `${v.MAIN_IMG}`);
