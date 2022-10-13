@@ -1,1 +1,0 @@
-import {getApiData} from './api2.js';
