@@ -1,9 +1,5 @@
-import {getCultureData, getSubwayData, getKakaoData} from './api.js';
+import {getApiData} from './api2.js';
         
-const cultureData = await getCultureData('CULTURE')
-
-console.log('cultureData:',cultureData);
-
 
 // 분류할 데이터 객체
 const kindData = {
@@ -16,7 +12,7 @@ const kindData = {
 
 //데이터 받아오기
 
-const data = await test_api("culture",1,60,""); // parmeta 1,2(문화축제 더보기에서 시작 점),3(끝점),4(codename별로 새롭게 검색 가능 ex 연극 빈 곳으로 놔두면 전체 순번 )
+const data = await getApiData("CULTURE",1,60,""); // parmeta 1,2(문화축제 더보기에서 시작 점),3(끝점),4(codename별로 새롭게 검색 가능 ex 연극 빈 곳으로 놔두면 전체 순번 )
 console.log(data);
 
 
