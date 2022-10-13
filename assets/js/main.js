@@ -1,8 +1,4 @@
-import {getCultureData, getSubwayData, getKakaoData} from './api.js';
-        
-const cultureData = await getCultureData('CULTURE')
-
-console.log('cultureData:',cultureData);
+import {test_api} from './api2.js';
 
 
 // 분류할 데이터 객체
@@ -14,8 +10,14 @@ const kindData = {
     'el' : [],
 };
 
+//데이터 받아오기
+
+const data = await test_api("culture",1,60,""); // parmeta 1,2(문화축제 더보기에서 시작 점),3(끝점),4(codename별로 새롭게 검색 가능 ex 연극 빈 곳으로 놔두면 전체 순번 )
+console.log(data);
+
+
 //데이터 종류별로 분류하기
-cultureData.forEach((v, i) => {
+data.forEach((v, i) => {
     
     if(v.CODENAME.includes('축제')) {
         kindData['festival'].push(v);
@@ -30,28 +32,32 @@ cultureData.forEach((v, i) => {
     }
 })
 
+console.log(kindData);
+
+
+// nav 버튼 작업
 
 const setActiveGnb = (kind) => {
     if (kind) {
         document.querySelectorAll('.gnb a').forEach((v, i) => {
             if(v.dataset.kind == kind) {
+                console.log('v.dataset.kind',v.dataset.kind);
                 v.classList.add('active');
-                console.log(v)
             } else {
                 v.classList.remove('active');
             }
         })
     }
+
 }
 
-
-console.log(location.search)
 const query = new URLSearchParams(location.search);
 const kind = query.get('kind');
+console.log('!!!', kind);
 setActiveGnb(kind);
 
 const currentList = kindData[`${kind}`];
-console.log(currentList);
+console.log('@@@',currentList);
 
 const container = document.querySelector('.main_container')
 
@@ -71,6 +77,15 @@ currentList.forEach((v, i) => {
     container.appendChild(item);
     
 })
+
+
+
+
+
+
+
+
+
 
 
 

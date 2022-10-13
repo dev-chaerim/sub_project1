@@ -10,6 +10,8 @@ const CULTURE_REST_KEY = '596d734a65646c7333367749686247'
 const CULTURE_CODENAME  = "";
 const KAKAO_REST_KEY = '0ec224f87893bd9a115d82797a7bc8b6';
 
+
+/** key, url 받아오기 */
 function getApiKey(key) {
     let KeyValue = "";
     if(key === "CULTURE"){
@@ -34,20 +36,21 @@ function getApiUrl(urlName) {
     return url;
 }
 
+//데이터 받아오는 함수
 async function test_api(api,start,end,data){  
     let json = null;
     let dataArry = null;
-    if(api === "culture"){
-        try{
+    if(api === "culture") {
+        try {
             const response = await axios.get(`${CULTURE_URL}` + `${CULTURE_REST_KEY}`+'/json/culturalEventInfo/'+`${start}`+'/'+ `${end}`+ '/' + data);                
             dataArry= response.data;
             json = dataArry.culturalEventInfo.row;
-        }catch(e){
+        } catch(e){
             console.error(e);
             alert('요청을 처리하는데 실패했습니다.');
             return;
         } 
-    } else if(api ==="subway"){
+    } else if(api ==="subway") {
         const response1 = await axios.get('http://apis.data.go.kr/1613000/SubwayInfoService/getKwrdFndSubwaySttnList',{
             params : {
                 serviceKey : `${SUBWAY_REST_KEY}`,
@@ -61,7 +64,7 @@ async function test_api(api,start,end,data){
         });
         dataArry = response1.data;
         json = dataArry.response.body.items.item;
-    } else if (api ==='kakao'){
+    } else if (api ==='kakao') {
         const response2 = await axios.get('https://dapi.kakao.com/v2/local/search/keyword.json',{
             params : {
                 query : data,
@@ -74,5 +77,8 @@ async function test_api(api,start,end,data){
         json = dataArry.documents[0];
     }
 
-        return json;
+    // 데이터 반환
+    return json;
 }
+
+export { test_api };
