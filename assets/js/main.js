@@ -1,5 +1,5 @@
 import {getCultureData, getSubwayData, getKakaoData} from './api.js';
-        
+import {getApiData} from './api2.js';
 const cultureData = await getCultureData('CULTURE')
 
 console.log('cultureData:',cultureData);

@@ -110,6 +110,4 @@ async function getKakaoData(data, place) {
 
     return json;
 }
-
-
 export { getCultureData, getSubwayData, getKakaoData };
