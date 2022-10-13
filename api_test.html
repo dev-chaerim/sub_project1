@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>api test</title>
+
+</head>
+<body>
+
+    <script src="./node_modules/axios/dist/axios.min.js"></script>
+    
+    <script type="module">
+        import {getCultureData, getSubwayData, getKakaoData} from './assets/js/api.js';
+        
+        let stationName = '노원'
+        let place = '세종문화회관'
+
+        const cultureData = await getCultureData('CULTURE')
+        const subwayData = await getSubwayData('SUBWAY', stationName);
+        const kakaoData = await getKakaoData('KAKAO_LOCAL', place);
+
+        console.log('cultureData:',cultureData);
+        console.log('subwayData:',subwayData);
+        console.log('kakaoData:',kakaoData);
+
+    </script>
+
+
+</body>
+</html>
