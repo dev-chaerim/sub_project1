@@ -61,7 +61,14 @@ console.log('@@@',currentList);
 
 const container = document.querySelector('.main_container')
 
-currentList.forEach((v, i) => {
+currentList.some((v, i) => {
+
+    //3개만 노출되도록 설정
+    if( i == 3 ) {
+        return true;
+    }
+
+    // dom 요소 생성
     const item = document.createElement('div');
     item.classList.add('item');
 
@@ -72,7 +79,39 @@ currentList.forEach((v, i) => {
     img.setAttribute('src', `${v.MAIN_IMG}`);
     a.appendChild(img);
 
+    const text = document.createElement('div');
+    text.classList.add('item_text');
+    
+    const h2 = document.createElement('h2');
+    h2.innerHTML = v.TITLE;
+    
+    const p1 = document.createElement('p');
+    p1.innerHTML = v.DATE;
+
+    const p2 = document.createElement('p');
+    p2.innerHTML = v.PLACE;
+    
+    text.appendChild(h2);
+    text.appendChild(p1);
+    text.appendChild(p2);
+
+    a.appendChild(text);
+
+    const btnBox = document.createElement('div');
+    btnBox.classList.add('btn_box');
+
+    const btn1 = document.createElement('button');
+    btn1.setAttribute('type', 'button');
+    btn1.innerHTML = '지도';
+    btnBox.appendChild(btn1);
+    
+    const btn2 = document.createElement('button');
+    btn2.setAttribute('type', 'button');
+    btn2.innerHTML = '길찾기';
+    btnBox.appendChild(btn2);
+    
     item.appendChild(a);
+    item.appendChild(btnBox);
 
     container.appendChild(item);
     

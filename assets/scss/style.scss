@@ -167,6 +167,18 @@ main {
             border: 1px solid rgb(175, 175, 175);
             // background-color: antiquewhite;
             padding: 8px;
+            width: 200px;
+            
+            h2 {
+                // background-color: #555;
+                width: 200px;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                -webkit-line-clamp: 1;
+                margin-bottom: 10px;
+                
+            }
             
             
             img {
@@ -174,10 +186,12 @@ main {
                 height: 320px;
                 object-fit: cover;
                 margin-bottom: 10px;
+                
             }
 
             p {
                 font-size: 13px;
+                margin-top: 3px;
             }
 
             &:hover {
