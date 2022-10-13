@@ -16,20 +16,20 @@
     <div id = "console"></div> 
 
     <script src ="node_modules/axios/dist/axios.min.js"></script>
-    <script src = "assets/js/api2.js"></script>
-  
-    <script>
+  <!-- <script src = "assets/js/api2.js"></script>
+  --> 
  
-    (async () => {
-        const funccul = await test_api("culture",1,10,"연극"); // parmeta 1,2(문화축제 더보기에서 시작 점),3(끝점),4(codename별로 새롭게 검색 가능 ex 연극 빈 곳으로 놔두면 전체 순번 )
+    <script type ="module">
+    import {getApiData} from './assets/js/api2.js';
+
+        const funccul = await getApiData("CULTURE",1,10,""); // parmeta 1,2(문화축제 더보기에서 시작 점),3(끝점),4(codename별로 새롭게 검색 가능 ex 연극 빈 곳으로 놔두면 전체 순번 )
         console.log(funccul);
 
-        const funcsub = await test_api("subway","","","강남");// 로컬 혹은 문화 축제 api에서 받은 주소를 parmeta 4번에 넣어 지하철 정보 가져 옴 
+        const funcsub = await getApiData("SUBWAY","","","강남");// 로컬 혹은 문화 축제 api에서 받은 주소를 parmeta 4번에 넣어 지하철 정보 가져 옴 
         console.log(funcsub);
 
-        const funckakao = await test_api("kakao","","","세종문화회관"); // 문화 축제 api에서 받은 주소를 parameta 4번에 넣어 주소 받아옴
+        const funckakao = await getApiData("KAKAO_LOCAL","","","세종문화회관 M씨어터"); // 문화 축제 api에서 받은 주소를 parameta 4번에 넣어 주소 받아옴
         console.log(funckakao);
-    })();
 
     </script>
 </body>

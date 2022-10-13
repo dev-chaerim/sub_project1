@@ -1,4 +1,8 @@
-import {test_api} from './api2.js';
+import {getCultureData, getSubwayData, getKakaoData} from './api.js';
+        
+const cultureData = await getCultureData('CULTURE')
+
+console.log('cultureData:',cultureData);
 
 
 // 분류할 데이터 객체
