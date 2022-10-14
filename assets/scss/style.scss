@@ -148,6 +148,9 @@ footer {
     }
 }
 
+
+/** main */
+
 main {
     display: flex;
     flex-direction: column;
@@ -257,6 +260,7 @@ main {
     }
 }
 
+
 /* 더보기 버튼 */
 .btn_more, .btn_fold {
     margin: 20px auto;
@@ -360,7 +364,8 @@ main {
     color:$textColor;
 }
 
-//지하철
+
+/** 서브페이지 지하철 */
 
 .sub_map {
     margin-top: 20px;
