@@ -26,8 +26,8 @@ p {
     padding: 10px 0;
     // width: 800px;
     margin: auto;
-    // background-color: #eee;
-    @include setSize(90%, 80%, 60%);
+    background-color: #eee;
+    @include setSize(70%, 90%, 50%);
     
 }
 
@@ -113,7 +113,6 @@ footer {
 .gnb {
     display: flex;
     // background-color: #555;
-    width: 70%;
     margin: 0 auto;
     padding: 10px;
     justify-content: space-between;
@@ -163,7 +162,7 @@ main {
     justify-content: space-between;
     padding: 20px 0;
     flex-wrap:wrap;
-    @include setSize(50%, 88%, 88%);
+    // @include setSize(50%, 100%, 100%);
     @include mobile {
         justify-content: center;
     }
