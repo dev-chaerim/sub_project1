@@ -6,7 +6,7 @@ const data = await getApiData("CULTURE",1,60,"");
 
 const queryIndex = location.search.substring(1);
 // console.log(queryIndex);
-// console.log(data[queryIndex]);
+console.log(data[queryIndex]);
 
 
 //상세페이지 dom 요소 생성
@@ -46,11 +46,15 @@ arr.forEach((v, i) => {
 subcontainer.appendChild(detailCon);
 
 //필요한 상세 데이터 배열로 추출
+if(data[queryIndex].USE_FEE == "") {
+    data[queryIndex].USE_FEE = " - ";
+}
 let detailArr = [data[queryIndex].TITLE, data[queryIndex].CODENAME, data[queryIndex].DATE, data[queryIndex].USE_FEE, data[queryIndex].PLACE, data[queryIndex].USE_TRGT, ]
 //화면에 넣어주기
 document.querySelectorAll('.sub_list_content h2').forEach((v, i) => {
     v.innerHTML = detailArr[i];
 });
+
 
 
 // 카카오 api 데이터 받아오기

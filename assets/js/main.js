@@ -203,7 +203,7 @@ function makeDom(v, con) {
     btnBox.appendChild(btn2);
     
     item.appendChild(a);
-    item.appendChild(btnBox);
+    // item.appendChild(btnBox);
 
     con.appendChild(item);
 }
