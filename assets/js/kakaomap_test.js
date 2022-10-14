@@ -28,16 +28,9 @@ function Map(x,y){
     marker.setMap(map);
     // 아래 코드는 지도 위의 마커를 제거하는 코드입니다
     // marker.setMap(null);    
-    var places = new kakao.maps.services.Places();
+
 }
 
-var callback = function(result, status) {
-    if (status === kakao.maps.services.Status.OK) {
-        console.log(result);
-    }
-};
-
-places.keywordSearch('판교 치킨', callback);
 
 
 
