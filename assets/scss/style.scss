@@ -282,11 +282,13 @@ main {
 
     img {
         width: 250px;
+        height: 320px;
+        object-fit: cover;
     }
 
     .sub_detail {
         margin-left: 20px;
-        width: 490px;
+        width: 410px;
         // background-color: antiquewhite;
         display: flex;
         flex-direction: column;
@@ -304,15 +306,24 @@ main {
                 border: 1px solid #555;
                 border-bottom: none;
                 // background-color: #555;
-                padding: 16px 3px;
+                padding: 10px 3px;
                 width: 90px;
                 text-align: center;
+                white-space: nowrap;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                
+                
             }
             
             .sub_list_content {
                 padding: 10px;
                 // background-color: #555;
+                width: 330px;
                 line-height: 25px;
+                // white-space: nowrap;
+                font-size: 15px;
             }
             div {
                 margin-right: 10px;
@@ -331,6 +342,8 @@ main {
     color:$textColor;
 }
 
+//지하철
+
 .sub_map {
     margin-top: 20px;
     padding: 20px 0;
@@ -343,26 +356,12 @@ main {
 
     div {
         margin-top: 20px;
-        border: 1px solid #ccc;
-        width: 100%;
-        height: 200px;
+        
+    }
+
+    #map{
+        width : 680px;
+        height : 300px;
     }
 }
 
-.sub_subway {
-    margin-top: 20px;
-    padding: 20px 0;
-    
-    h2 {
-        border-bottom: 1px solid $deepYello;
-        width: 170px;
-        padding-bottom: 6px;
-    }
-
-    div {
-        margin-top: 20px;
-        border: 1px solid #ccc;
-        width: 100%;
-        height: 200px;
-    }
-}

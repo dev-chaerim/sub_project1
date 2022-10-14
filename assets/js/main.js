@@ -164,7 +164,7 @@ function makeDom(v, con) {
             }
         })
         // console.log(idx);
-        a.setAttribute('href', `./sub.html?$/{idx}`);
+        a.setAttribute('href', `./sub.html?${idx}`);
     })
 
     const img = document.createElement('img');
