@@ -8,12 +8,6 @@ const queryIndex = location.search.substring(1);
 // console.log(queryIndex);
 // console.log(data[queryIndex]);
 
-// 카카오 api 데이터 받아오기
-const Localdata = await getApiData('KAKAO_LOCAL',"","",data[queryIndex].PLACE); // KAKAO LOCAL API 접속 데이터 받아 오기
-// console.log(Localdata);
-// console.log(Localdata[0].x,Localdata[0].y); // 받아온 장소의 x(경도), y(위도) 데이터 확인 ex) 세종문화회관 좌표 
-Map( Localdata[0].x,Localdata[0].y);
-
 
 //상세페이지 dom 요소 생성
 const subcontainer = document.querySelector('.sub_container')
@@ -58,6 +52,12 @@ document.querySelectorAll('.sub_list_content h2').forEach((v, i) => {
     v.innerHTML = detailArr[i];
 });
 
+
+// 카카오 api 데이터 받아오기
+const Localdata = await getApiData('KAKAO_LOCAL',"","",data[queryIndex].PLACE); // KAKAO LOCAL API 접속 데이터 받아 오기
+// console.log(Localdata);
+// console.log(Localdata[0].x,Localdata[0].y); // 받아온 장소의 x(경도), y(위도) 데이터 확인 ex) 세종문화회관 좌표 
+Map( Localdata[0].x,Localdata[0].y);
 
 function Map(x,y){
     var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
