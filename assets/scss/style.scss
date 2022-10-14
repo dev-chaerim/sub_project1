@@ -1,5 +1,6 @@
 @import 'variable.scss';
 @import 'fonts.scss';
+@import 'responsive.scss';
 
 
 
@@ -10,7 +11,7 @@ body {
     // font-family: 'Do Hyeon', sans-serif;
     // font-family: 'BMHANNAAir';
     font-family: 'Hanna', fantasy;
-    background-color: #555;
+    // background-color: #555;
 }
 
 button {
@@ -22,10 +23,12 @@ p {
 }
 
 .container {
-    // padding: 20px 0;
-    width: 800px;
+    padding: 10px 0;
+    // width: 800px;
     margin: auto;
-    background-color: white;
+    // background-color: #eee;
+    @include setSize(100%, 100%, 60%);
+    
 }
 
 a {
@@ -35,8 +38,8 @@ a {
 
 
 /* header */
-.container header {
-    background-color: #555;
+header {
+    // background-color: #555;
     background: url(../img/bg1.jpg) center/cover no-repeat;
     width: 100%;
     height: 190px;
@@ -53,7 +56,7 @@ a {
 
 /* footer */
 
-.container footer {
+footer {
     
     margin-top: 50px;
     background-color: $footerColor;
@@ -114,13 +117,13 @@ a {
     margin: 0 auto;
     padding: 10px;
     justify-content: space-between;
-
+    white-space: nowrap;
+    
     li {
-        // background-color: aquamarine;
+
         text-align: center;
         padding: 10px;
         flex: 1;
-        
         a {
             display: block;
             padding: 12px 8px;
@@ -154,11 +157,15 @@ main {
 .main_container {
     display: flex;
     // background-color: #555;
-    width: 88%;
+    // width: 88%;
     margin: 0 auto;
     justify-content: space-between;
     padding: 20px 0;
     flex-wrap:wrap;
+    @include setSize(50%, 88%, 88%);
+    @include mobile {
+        justify-content: center;
+    }
     
     .item {
         // background-color:aqua;
@@ -166,12 +173,16 @@ main {
         flex-direction: column;
         align-items:center;
         margin-top: 20px;
+        
 
         a {
             border: 1px solid rgb(175, 175, 175);
             // background-color: antiquewhite;
             padding: 8px;
             width: 200px;
+            @include mobile {
+                width: 250px;
+            }
             
             h2 {
                 // background-color: #555;
@@ -180,6 +191,9 @@ main {
                 overflow: hidden;
                 text-overflow: ellipsis;
                 margin-bottom: 10px;
+                @include mobile {
+                    width: 250px;
+                }
                 
             }
             
@@ -189,6 +203,9 @@ main {
                 height: 320px;
                 object-fit: cover;
                 margin-bottom: 10px;
+                @include mobile {
+                    width: 250px;
+                }
                 
             }
 
@@ -199,6 +216,7 @@ main {
                 white-space: nowrap;
                 overflow: hidden;
                 text-overflow: ellipsis;
+                
             }
 
             &:hover {
