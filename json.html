@@ -6,31 +6,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        .text-success{
-            color:#0066ff;
-            font-size : 24px;
-        }
+    #map{
+        margin-top : 300px;
+        margin-left : 20px;
+        width : 680px;
+        height : 400px;
+    }
     </style>
+ 
 </head>
 <body>
+    
     <div id = "console"></div> 
-
-    <script src ="node_modules/axios/dist/axios.min.js"></script>
+    <div id="map"></div>
+    <script src="node_modules/axios/dist/axios.min.js"></script>
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=12c5f1fac320517ce4353c6c331c5ff3&libraries=LIBRARY"></script> <!--kakaomap JS api-->
+    <!-- services 라이브러리 불러오기 -->
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=12c5f1fac320517ce4353c6c331c5ff3&libraries=services"></script>
+    <script src="assets/js/include.js"></script>
+    <script type='module' src="assets/js/kakaomap_test.js"></script>
   <!-- <script src = "assets/js/api2.js"></script>
   --> 
- 
-    <script type ="module">
-    import {getApiData} from './assets/js/api2.js';
-
-        const funccul = await getApiData("CULTURE",1,10,""); // parmeta 1,2(문화축제 더보기에서 시작 점),3(끝점),4(codename별로 새롭게 검색 가능 ex 연극 빈 곳으로 놔두면 전체 순번 )
-        console.log(funccul);
-
-        const funcsub = await getApiData("SUBWAY","","","강남");// 로컬 혹은 문화 축제 api에서 받은 주소를 parmeta 4번에 넣어 지하철 정보 가져 옴 
-        console.log(funcsub);
-
-        const funckakao = await getApiData("KAKAO_LOCAL","","","세종문화회관 M씨어터"); // 문화 축제 api에서 받은 주소를 parameta 4번에 넣어 주소 받아옴
-        console.log(funckakao);
-
-    </script>
 </body>
 </html>
